@@ -72,7 +72,7 @@ class RoleUser(models.Model):
 
 
 class UserApp(models.Model):
-    email = models.CharField(primary_key=True, max_length=-1)
+    email = models.CharField(primary_key=True, max_length=255)
     first_name = models.CharField(max_length=25)
     last_name = models.CharField(max_length=25)
     password = models.CharField(max_length=255)
