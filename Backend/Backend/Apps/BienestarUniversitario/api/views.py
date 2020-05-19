@@ -1,7 +1,7 @@
 from rest_framework import generics
 
-from ..models import Activity, UserApp, Inscription
-from .serializers import ActivitySerializer, UserAppSerializer, InscriptionSerializer
+from ..models import Activity, UserApp, Inscription, Course
+from .serializers import ActivitySerializer, UserAppSerializer, InscriptionSerializer, CourseSerializer
 
 class ActivityListView(generics.ListAPIView):
     queryset = Activity.objects.all()
@@ -32,3 +32,14 @@ class UserAppCreateView(generics.CreateAPIView):
     serializer_class = UserAppSerializer
 
 
+class CourseCreateView(generics.CreateAPIView):
+    queryset = Course.objects.all()
+    serializer_class = CourseSerializer
+
+class ProfessorActivitysAvailables(generics.ListAPIView):
+    serializer_class = ActivitySerializer
+    def get_queryset(self):
+        professor_id = self.kwargs['professor']
+        result = Activity.objects.filter(professor = professor_id)
+        return result
+        
