@@ -5,12 +5,15 @@ from .views import (
     ActivityDetailView, 
     ActivityCreateView,
     EnrollUserAppListView,
+    CourseCreateView,
+    ProfessorActivitysAvailables
 )
 
 urlpatterns = [
     path('activity/', ActivityListView.as_view()),
     path('create/activity/', ActivityCreateView.as_view()),
-    path('<pk>', ActivityDetailView.as_view()),
+    path('activity/<pk>', ActivityDetailView.as_view()),
     path('enrollstudents/<activity>', EnrollUserAppListView.as_view()),
-
+    path('create/course/', CourseCreateView.as_view()),
+    path('<professor>/activitys', ProfessorActivitysAvailables.as_view()),
 ]
