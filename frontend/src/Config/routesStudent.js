@@ -10,7 +10,7 @@ const BaseRouter = () => (
             <Switch>
                 <Route path="/studentPane/activities" component={BienestarActivities} />
                 <Route path="/studentPane/myActivities" component={StudentActivities} />
-                <Route path="/studentPane/assistance" component={StudentAssistance} />
+                <Route path="/studentPane/assistance/:id_activity" component={StudentAssistance} />
             </Switch>
         </Router>
     </div>

@@ -6,6 +6,7 @@ import styled from 'styled-components';
 const Styles = styled.div`
 .navigationbar-container{
   width: 100vw;
+  height:auto;
 }
 .navbar { background-color: #122562; }
 

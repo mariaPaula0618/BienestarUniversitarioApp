@@ -1,14 +1,13 @@
 import  React from 'react';
 import {Route,Switch, BrowserRouter as Router} from 'react-router-dom';
-import Home from '../Components/Home';
-import Register from '../Components/Register/Register'
+import Register from '../Components/Register/Register';
 import Student from '../Components/Student/Student';
-import Teacher from '../Components/Teacher/Teacher'
-import Admin from '../Components/Admin/Admin'
+import Login from '../Components/login';
+import Teacher from '../Components/Teacher/Teacher';
+import Admin from '../Components/Admin/Admin';
 
 
-
-const BaseRouter = () => (
+const BaseRouter = (props) => (
 <div className="router-container" style={{width :'100%'}}>
 <Router>
     <Switch>
@@ -16,7 +15,7 @@ const BaseRouter = () => (
         <Route path="/studentPane" component={Student} />
         <Route path="/teacherPane" component={Teacher} />
         <Route path="/adminPane" component={Admin} />
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Login} {...props}/>
     </Switch>
 </Router>
 </div>

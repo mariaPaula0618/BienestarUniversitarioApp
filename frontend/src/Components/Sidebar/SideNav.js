@@ -21,7 +21,7 @@ class SideNav extends Component {
     render() {
         
         const items = this.props.items.map(i =>(
-            <NavItem item={i}/>
+            <NavItem key={i.name} item={i}/>
         )); 
 
         return(<div className="sidenav-container" >

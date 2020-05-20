@@ -13,7 +13,8 @@ class StudentActivities extends Component{
                 { id: 3, title: "Celeste", place: "Plataformero", description: "45000"}
             ],
             title: "Mis Actividades",
-            option: "Ver asistencia"
+            option: "Ver asistencia",
+            link: "/studentPane/assistance"
         }
     }
 
@@ -21,7 +22,9 @@ class StudentActivities extends Component{
         return(<div className="studentActivities-container">
             <BoardActivity activities={this.state.activities} 
                            title = {this.state.title}
-                           option = {this.state.option} />
+                           option = {this.state.option} 
+                           link = {this.state.link}
+                           />
 
         </div>
 
