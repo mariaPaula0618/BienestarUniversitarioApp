@@ -8,8 +8,8 @@ const BaseRouter = () => (
     <div className="router-container" style={{width :'100%'}}>
         <Router>
             <Switch>
-                <Route path="/studentPane/activities" component={StudentActivities} />
-                <Route path="/studentPane/myActivities" component={BienestarActivities} />
+                <Route path="/studentPane/activities" component={BienestarActivities} />
+                <Route path="/studentPane/myActivities" component={StudentActivities} />
                 <Route path="/studentPane/assistance" component={StudentAssistance} />
             </Switch>
         </Router>

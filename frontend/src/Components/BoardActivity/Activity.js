@@ -14,7 +14,7 @@ class Activity extends Component{
                     <Card.Text>
                     {activity.description}
                     </Card.Text>
-                    <Card.Link href="#">Inscribirse</Card.Link>
+                    <Card.Link href="#">{this.props.option}</Card.Link>
                     <Card.Link href="#">Detalles</Card.Link>
                 </Card.Body>
             </Card>
