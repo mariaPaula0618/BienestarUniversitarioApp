@@ -9,9 +9,9 @@ const StyledSideNav = styled.div`
     width: 200px;     /* Set the width of the sidebar */
     z-index: 1;      /* Stay on top of everything */
     top: 3.4em;      /* Stay at the top */
-    background-color: #222; /* Black */
+    background-color: #9b9b9b; /* Black */
     overflow-x: hidden;     /* Disable horizontal scroll */
-    padding-top: 10px;
+    padding-top: 30px;
 `;
 
 class SideNav extends Component {
@@ -24,7 +24,7 @@ class SideNav extends Component {
             <NavItem item={i}/>
         )); 
 
-        return(<div className="sidenav-container">
+        return(<div className="sidenav-container" >
             <StyledSideNav>
                 {items}
             </StyledSideNav>

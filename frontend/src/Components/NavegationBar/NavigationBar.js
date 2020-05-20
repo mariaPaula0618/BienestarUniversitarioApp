@@ -1,24 +1,15 @@
 import React, {Component} from 'react';
 import { Nav, Navbar, Form, FormControl } from 'react-bootstrap';
 import styled from 'styled-components';
-import * as Icon from 'react-bootstrap-icons';
+
 
 const Styles = styled.div`
-.navbar { background-color: #222; }
-a, .navbar-nav, .navbar-light .nav-link {
-  color: #9FFFCB;
-  &:hover { color: white; }
+.navigationbar-container{
+  width: 100vw;
 }
-.navbar-brand {
-  font-size: 1.4em;
-  color: #9FFFCB;
-  &:hover { color: white; }
-}
-.form-center {
-  position: absolute !important;
-  left: 25%;
-  right: 25%;
-}
+.navbar { background-color: #122562; }
+
+
 `;  
 
 class NavigationBar extends Component{
@@ -26,19 +17,19 @@ class NavigationBar extends Component{
   render() {
     return(
       <Styles>
-          <Navbar expand="lg">
-            <Navbar.Brand href="/">Tutorial</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-            <Form className="form-center">
-              <FormControl type="text" placeholder="Search" className="" />
+         <div className="navigationbar-container">
+           <Navbar expand="lg" variant="dark">
+            <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+            <Nav className="mr-auto">
+              <Nav.Link href="#home">Home</Nav.Link>
+              <Nav.Link href="#features">Features</Nav.Link>
+              <Nav.Link href="#pricing">Pricing</Nav.Link>
+            </Nav>
+            <Form inline>
+              <FormControl type="text" placeholder="Search" className="mr-sm-2" />
             </Form>
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="ml-auto">
-                <Nav.Item><Nav.Link href="/">Home <Icon.ArrowRight/> </Nav.Link></Nav.Item> 
-                <Nav.Item><Nav.Link href="/about">About</Nav.Link></Nav.Item>
-              </Nav>
-            </Navbar.Collapse>
           </Navbar>
+          </div>
         </Styles>
     );
       

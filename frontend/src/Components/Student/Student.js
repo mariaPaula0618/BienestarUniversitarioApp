@@ -6,10 +6,23 @@ import Routes from './../../Config/routesStudent'
 
 const Styles = styled.div`
 .student-container{
-    background-color: mintcream;
+
+    width: 100%;
+    height: 100vh;
 }
-.student-container header{
-    height: auto;
+.navbar{
+    width: 100%;
+ 
+}
+.content-student{
+    display: flex;
+    width: 100%;
+}
+.sidebar{
+    width: 20%;
+}
+.router-content{
+    width: 80%;
 }
 
 `;
@@ -20,8 +33,8 @@ class Student extends Component{
         super();
         this.state = {
             items:[
-                {title:"Actividades de bienestar", icon: "house", link: "Activities"},
-                {title:"Actividades inscritas", icon: "house", link: "RegisteredActivities"},
+                {title:"Actividades de bienestar", icon: "house", link: "/studentPane/activities"},
+                {title:"Actividades inscritas", icon: "house", link: "/studentPane/myActivities"},
             ]
           
   
@@ -30,15 +43,13 @@ class Student extends Component{
       }
 
       render(){
-          console.log(this.state.items)
           return(<Styles>
           <div className="student-container">
-              <header>
+              
                   <div className="navbar">
                       <NavegationBar></NavegationBar>
                   </div>
-              </header>
-              <section className="center">
+            
                   <div className="content-student">
                     <div className="sidebar">
                         <Sidebar items={this.state.items} />
@@ -47,7 +58,6 @@ class Student extends Component{
                         <Routes />
                     </div>
                   </div>
-              </section>
              
               
           </div>

@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import {BrowserRouter, Route} from 'react-router-dom';
 
 
 
@@ -21,8 +22,10 @@ const store = createStore(reducer, composeEnhances(
   
   const app = (
     <Provider store = {store}>
-    <App />
-  </Provider>
+    <BrowserRouter>
+      <Route component={App} />
+      </BrowserRouter>
+    </Provider>
 )
 
 /**ReactDOM.render(

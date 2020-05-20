@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { connect }  from 'react-redux';
-import Routes from './Config/routes';
+import BaseRouter from './Config/routes';
 import * as actions  from './store/actions/auth';
 
 
@@ -15,7 +15,7 @@ class App extends Component{
   render() {
     return(
       <div className="app">
-        <Routes {...this.props} />
+        <BaseRouter {...this.props} />
     </div>
 
       

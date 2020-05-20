@@ -18,7 +18,7 @@ class Sidebar extends Component {
         let items = this.props.items;
        
 
-        return (<div className="sidebar-container">
+        return (<div className="sidebar-container" >
             <div className="sidebar-icon">
                     <SidebarIcon
                      isOpen={this.state.isOpen}
