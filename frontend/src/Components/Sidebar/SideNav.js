@@ -6,7 +6,7 @@ import NavItem from "./NavItem"
 const StyledSideNav = styled.div`   
     position: fixed;     /* Fixed Sidebar (stay in place on scroll and position relative to viewport) */
     height: 100%;
-    width: 200px;     /* Set the width of the sidebar */
+        /* Set the width of the sidebar */
     z-index: 1;      /* Stay on top of everything */
     top: 3.4em;      /* Stay at the top */
     background-color: #9b9b9b; /* Black */
