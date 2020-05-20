@@ -1,16 +1,16 @@
 import  React from 'react';
 import {Route,Switch, BrowserRouter as Router} from 'react-router-dom';
-import Home from '../Components/Home';
-import Register from '../Components/Register/Register'
+import Register from '../Components/Register/Register';
 import Student from '../Components/Student/Student';
+import Login from '../Components/login'
 
 
 
-const BaseRouter = () => (
+const BaseRouter = (props) => (
 
 <Router>
     <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Login} {...props}/>
         <Route path="/userRegister" component={Register} />
         <Route path="/studentPane" component={Student} />
     </Switch>

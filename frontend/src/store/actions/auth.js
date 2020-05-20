@@ -1,11 +1,11 @@
-import axios from Axios;
+import axios from 'axios';
 import * as actionTypes from './actionTypes';
 
 export const authStart = () => {
     return {
         type: actionTypes.AUTH_START
     }
-},
+}
 
 export const authSuccess = token => {
     return {
@@ -58,5 +58,22 @@ export const authLogin = (username, password) => {
         .catch(err => {
             dispatch(authFail(err))
         })
+    }
+}
+
+export const authCheckState = () => {
+    return dispatch => {
+        const token = localStorage.getItem('token');
+        if(token  === undefined) {
+            dispatch(logout());
+        } else {
+            const expirationDate = new Date(localStorage.getItem('expirationDate'));
+            if(expirationDate >= new Date()) {
+                dispatch(logout());
+            } else {
+                dispatch(authSuccess(token));
+                dispatch(checkAuthTimeout( (expirationDate.getTime()- new Date().getTime())/1000))
+            }
+        }
     }
 }
