@@ -7,15 +7,15 @@ import styled from 'styled-components';
 const Styles = styled.div`
 
 .icon{
-    color: white;
+    color: #122562;
     height: 70px;
     width: 75px;
     
 }
 .sidebar-link{
-    color: white;
+    color: black;
     margin-top: 15px;
-    
+    font-weight: bold
 }
 .navitem-container{
     display: flex;

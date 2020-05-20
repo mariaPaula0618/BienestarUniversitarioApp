@@ -3,6 +3,7 @@ import {Route,Switch, BrowserRouter as Router} from 'react-router-dom';
 import Home from '../Components/Home';
 import Register from '../Components/Register/Register'
 import Student from '../Components/Student/Student';
+import Teacher from '../Components/Teacher/Teacher'
 import Admin from '../Components/Admin/Admin'
 
 
@@ -13,6 +14,7 @@ const BaseRouter = () => (
     <Switch>
         <Route path="/userRegister" component={Register} />
         <Route path="/studentPane" component={Student} />
+        <Route path="/teacherPane" component={Teacher} />
         <Route path="/adminPane" component={Admin} />
         <Route exact path="/" component={Home} />
     </Switch>

@@ -6,9 +6,10 @@ import styled from 'styled-components';
 const Styles = styled.div`
 .navigationbar-container{
   width: 100vw;
-
-
 }
+.navbar { background-color: #122562; }
+
+
 `;  
 
 class NavigationBar extends Component{
@@ -17,7 +18,7 @@ class NavigationBar extends Component{
     return(
       <Styles>
          <div className="navigationbar-container">
-           <Navbar bg="primary" variant="dark">
+           <Navbar expand="lg" variant="dark">
             <Navbar.Brand href="#home">Navbar</Navbar.Brand>
             <Nav className="mr-auto">
               <Nav.Link href="#home">Home</Nav.Link>
