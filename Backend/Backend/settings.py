@@ -39,9 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Backend.Apps.BienestarUniversitario',
     'rest_framework', 
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware'
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -57,8 +59,10 @@ REST_FRAMEWORK = {
     ]
 }
 
-ROOT_URLCONF = 'Backend.urls'
+CORS_ORIGIN_ALLOW_ALL = True
 
+ROOT_URLCONF = 'Backend.urls'
+ 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -86,7 +90,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'WebApp',
         'USER': 'postgres',
-        'PASSWORD' : '3113323005Sa',
+        'PASSWORD' : 'Luna0618',
         'HOST' : 'localhost',
         'PORT' : 5432
     }

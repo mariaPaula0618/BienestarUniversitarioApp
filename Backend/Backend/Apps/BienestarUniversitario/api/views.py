@@ -23,6 +23,15 @@ class EnrollUserAppListView(generics.ListAPIView):
         result = UserApp.objects.raw('select * from user_app inner join (select * from inscription where activity_id ='+activity_id+') y on user_app.email= y.user_id')
         return  result
 
+class InscriptionCreateView(generics.CreateAPIView):
+    queryset = Inscription.objects.all()
+    serializer_class = InscriptionSerializer
+
+class UserAppCreateView(generics.CreateAPIView):
+    queryset = UserApp.objects.all()
+    serializer_class = UserAppSerializer
+
+
 class CourseCreateView(generics.CreateAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
