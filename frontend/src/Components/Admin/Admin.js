@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from 'styled-components';
 import Sidebar from './../Sidebar/Sidebar';
 import NavegationBar from './../NavegationBar/NavigationBar';
-import Routes from './../../Config/routesStudent'
+import Routes from './../../Config/routesAdmin'
 
 
 const Styles = styled.div`
@@ -34,8 +34,9 @@ class Admin extends Component{
         super();
         this.state = {
             items:[
-                {title:"Actividades de bienestar", icon: "house", link: "/adminPane/activities"},
-                {title:"Estadisticas", icon: "house", link: "/adminPane/statistics"},
+                {title:"Actividades de bienestar", icon: "house", link: "/adminPane/activites"},
+                {title:"Cursos de bienestar", icon: "house", link: "/adminPane/courses"},
+                {title:"Estadísticas", icon: "house", link: "/adminPane/statistics"},
             ]
           
   

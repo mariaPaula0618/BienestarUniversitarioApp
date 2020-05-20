@@ -6,7 +6,6 @@ class ActivityList extends Component{
 
     render(){
         return(<div className="activitylist-container">
-         
         </div>
 
         )
