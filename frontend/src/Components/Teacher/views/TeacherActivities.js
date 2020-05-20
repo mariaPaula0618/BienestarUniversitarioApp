@@ -13,6 +13,7 @@ class TeacherActivities extends Component{
             ],
             title: "Listado de actividades",
             option: "Ver Inscritos",
+            link: "/teacherPane/enrollStudents",
         }
     }
 
@@ -23,7 +24,8 @@ class TeacherActivities extends Component{
         return(<div className="teacherActivities-container">
                 <BoardActivity activities={this.state.activities} 
                            title = {this.state.title} 
-                           option = {this.state.option}/>
+                           option = {this.state.option}
+                           link = {this.state.link}/>
         </div>
 
         )
