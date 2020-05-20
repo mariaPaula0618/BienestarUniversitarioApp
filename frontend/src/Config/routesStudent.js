@@ -5,15 +5,16 @@ import BienestarActivities from '../Components/Student/views/BienestarAcitivitie
 import StudentAssistance from '../Components/Student/views/StudentAssistance'
 
 const BaseRouter = () => (
-
-    <Router>
-        <Switch>
-            <Route path="/studentPane/activities" component={StudentActivities} />
-            <Route path="/studentPane/myActivities" component={BienestarActivities} />
-            <Route path="/studentPane/assistance" component={StudentAssistance} />
-        </Switch>
-    </Router>
+    <div className="router-container" style={{width :'100%'}}>
+        <Router>
+            <Switch>
+                <Route path="/studentPane/activities" component={StudentActivities} />
+                <Route path="/studentPane/myActivities" component={BienestarActivities} />
+                <Route path="/studentPane/assistance" component={StudentAssistance} />
+            </Switch>
+        </Router>
+    </div>
     );
+
     
-    
-    export default BaseRouter;
+export default BaseRouter;

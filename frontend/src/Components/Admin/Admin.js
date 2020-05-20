@@ -4,8 +4,9 @@ import Sidebar from './../Sidebar/Sidebar';
 import NavegationBar from './../NavegationBar/NavigationBar';
 import Routes from './../../Config/routesStudent'
 
+
 const Styles = styled.div`
-.student-container{
+.admin-container{
 
     width: 100%;
     height: 100vh;
@@ -14,7 +15,7 @@ const Styles = styled.div`
     width: 100%;
  
 }
-.content-student{
+.content-admin{
     display: flex;
     width: 100%;
 }
@@ -27,14 +28,14 @@ const Styles = styled.div`
 
 `;
 
-class Student extends Component{
+class Admin extends Component{
 
     constructor() {
         super();
         this.state = {
             items:[
-                {title:"Actividades de bienestar", icon: "house", link: "/studentPane/activities"},
-                {title:"Actividades inscritas", icon: "house", link: "/studentPane/RegisteredActivities"},
+                {title:"Actividades de bienestar", icon: "house", link: "/adminPane/activities"},
+                {title:"Estadisticas", icon: "house", link: "/adminPane/statistics"},
             ]
           
   
@@ -42,15 +43,16 @@ class Student extends Component{
   
       }
 
-      render(){
-          return(<Styles>
-          <div className="student-container">
-              
-                  <div className="navbar">
+    render(){
+        
+        return(<Styles>
+        <div className="admin-container">
+
+                    <div className="navbar">
                       <NavegationBar></NavegationBar>
                   </div>
             
-                  <div className="content-student">
+                  <div className="content-admin">
                     <div className="sidebar">
                         <Sidebar items={this.state.items} />
                     </div>
@@ -58,15 +60,13 @@ class Student extends Component{
                         <Routes />
                     </div>
                   </div>
-             
-              
-          </div>
-          </Styles>
-          )
-      }
 
 
+        </div>
+        </Styles>
 
+        )
+    }
 }
 
-export default Student;
+export default Admin

@@ -5,7 +5,7 @@ class BienestarActivities extends Component{
 
     render(){
         return(<div className="bienestartActivities-container">
-
+                
         </div>
 
         )

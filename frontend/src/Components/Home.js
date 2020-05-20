@@ -7,7 +7,7 @@ export default class Home extends Component {
 
         return (
            <h1>
-               This is test
+               This is a test
            </h1>
         );
     }

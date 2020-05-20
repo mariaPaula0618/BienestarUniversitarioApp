@@ -1,21 +1,49 @@
 import React, {Component} from 'react';
-import './Sidebar.css';
 import * as Icon from 'react-bootstrap-icons';
+import styled from 'styled-components';
 
+
+
+const Styles = styled.div`
+
+.icon{
+    color: white;
+    height: 70px;
+    width: 75px;
+    
+}
+.sidebar-link{
+    color: white;
+    margin-top: 15px;
+    
+}
+.navitem-container{
+    display: flex;
+    margin-top: 20px;
+    :hover {
+        opacity: 0.7;
+        text-decoration: none; /* Gets rid of underlining of icons */
+    } 
+}
+`;
 
 class NavItem extends  Component{
 
-    render(){
+      render(){
         let item = this.props.item
         return(
-            <div className ="navitem-container" >
+            <Styles>
+            <a className ="navitem-container" href= {item.link} >
+            
                 <div className="icon-container">
-                <Icon.House style={{ color: 'white'}} className="icon"/>
+                <Icon.House  className="icon"/>
                 </div>
-        <div className="sidebar-link" style={{ color: 'white'}}>{item.title}</div>
                
+            <div className="sidebar-link" >{item.title}</div>
 
-            </div>
+            </a>
+           
+            </Styles>
         )
     }
 

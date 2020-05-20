@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import Routes from './Config/routes'
+import BaseRouter from './Config/routes'
 
 
 class App extends Component{
@@ -9,7 +9,7 @@ class App extends Component{
   render() {
     return(
       <div className="app">
-        <Routes />
+        <BaseRouter />
     </div>
 
       
