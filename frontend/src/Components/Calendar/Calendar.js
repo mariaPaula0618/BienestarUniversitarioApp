@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-
+import SimpleReactCalendar from 'simple-react-calendar'
 
 class Calendar extends Component{
 
 
     render(){
         return(<div className="bigCalendar-container">
-            
-            <hi>Quiero ser un Calendario </hi>
+            <SimpleReactCalendar activeMonth={new Date()} />
+
         </div>
 
         )
