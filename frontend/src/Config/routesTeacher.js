@@ -9,7 +9,7 @@ const BaseRouter = () => (
         <Router>
             <Switch>
                 <Route path="/teacherPane/activities" component={TeacherActivities} />
-                <Route path="/teacherPane/studentList" component={StudentList} />
+                <Route path="/teacherPane/enrollStudents/:id_activity" component={StudentList} />
             </Switch>
         </Router>
     </div>
