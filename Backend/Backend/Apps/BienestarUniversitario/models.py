@@ -24,7 +24,7 @@ class Assistance(models.Model):
     assistance_id = models.AutoField(primary_key=True)
     inscription = models.ForeignKey('Inscription', models.DO_NOTHING)
     course = models.ForeignKey('Course', models.DO_NOTHING)
-    date = models.DateField()
+    date = models.TimeField(auto_now_add=True)
 
     class Meta:
         managed = False
@@ -81,3 +81,4 @@ class UserApp(models.Model):
     class Meta:
         managed = False
         db_table = 'user_app'
+

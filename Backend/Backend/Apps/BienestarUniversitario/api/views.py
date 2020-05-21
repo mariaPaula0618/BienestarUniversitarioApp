@@ -1,12 +1,13 @@
 from rest_framework import generics
+from django.core import serializers
 from django.contrib.auth.backends import BaseBackend
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import User
 from django.contrib.auth import (
     authenticate
 )
-from ..models import Activity, UserApp, Inscription, Course, Param
-from .serializers import ActivitySerializer, UserAppSerializer, InscriptionSerializer, CourseSerializer, ParamSerializer
+from ..models import Activity, UserApp, Inscription, Course, Param, Assistance
+from .serializers import ActivitySerializer, UserAppSerializer, InscriptionSerializer, CourseSerializer, ParamSerializer, AssistanceSerializer, ReportDaySerializer
 
 class ActivityListView(generics.ListAPIView):
     queryset = Activity.objects.all()
@@ -95,3 +96,22 @@ class ParamsListView(generics.ListAPIView):
 class CoursesListView(generics.ListAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
+
+class AssistanceCreateView(generics.CreateAPIView):
+    queryset = Assistance.objects.all()
+    serializer_class = AssistanceSerializer
+
+
+class AssistanceListView(generics.ListAPIView):
+    queryset = Assistance.objects.all()
+    serializer_class = AssistanceSerializer
+
+
+class reportByDate(generics.ListAPIView):
+    def get_queryset(self):
+        activity = self.kwargs['activity']
+        result = Assistance.objects.raw("select date_trunc('year', date), count(*), 1 as assistance_id from assistance inner join (select activity_id,course_id  from course where activity_id ="+ activity +") y on assistance.course_id  = y.course_id group by 1")
+        lista = serializers.serialize('json', result)
+        print(lista)
+        return  lista
+    serializer_class = ReportDaySerializer

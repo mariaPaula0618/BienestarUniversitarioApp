@@ -1,6 +1,6 @@
 # todos/serializers.py
 from rest_framework import serializers
-from ..models import Activity, UserApp, Inscription, Course, Param
+from ..models import Activity, UserApp, Inscription, Course, Param, Assistance
 
 
 class ActivitySerializer(serializers.ModelSerializer):
@@ -54,3 +54,29 @@ class ParamSerializer(serializers.ModelSerializer):
             'param_name'
         )
         model = Param
+
+
+class AssistanceSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = (
+            'assistance_id',
+            'inscription',
+            'course',
+            'date'
+        )
+        model = Assistance
+
+class ReportDaySerializer(serializers.Serializer):
+    def to_internal_value(self, data):
+        return {
+            'date_trunc': data.get('date_trunc'),
+            'count': data.get('count'),
+            'assistance_id': data.get('assistance_id')
+        }
+    def to_representation(self, instance):
+        
+        return {
+            'date_trunc': instance.date_trunc,
+            'count': instance.count,
+            'assistance_id': instance.assistance_id
+        }

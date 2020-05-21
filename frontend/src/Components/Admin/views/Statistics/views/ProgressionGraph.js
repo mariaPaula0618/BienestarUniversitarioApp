@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {Bar} from 'react-chartjs-2';
+import axios from 'axios'
 
 
 class ProgressionGraph extends Component{
@@ -23,6 +24,17 @@ class ProgressionGraph extends Component{
         }
   
       }
+
+    async getData(){
+        axios.get("http://localhost:8000/api/reportDay/1")
+        .then((response) => {
+            console.log(response.data);
+        })
+    }
+
+    componentDidMount(){
+        this.getData()
+    }
 
 
     render(){

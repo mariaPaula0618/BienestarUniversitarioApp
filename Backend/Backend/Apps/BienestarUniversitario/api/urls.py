@@ -12,7 +12,10 @@ from .views import (
     ListActivitiesOfStudents,
     UserAppListByRoleView,
     ParamsListView,
-    CoursesListView
+    CoursesListView,
+    AssistanceListView,
+    AssistanceCreateView,
+    reportByDate
 )
 
 urlpatterns = [
@@ -32,5 +35,8 @@ urlpatterns = [
     path('activities/<student>', ListActivitiesOfStudents.as_view() ),
 
     path('params', ParamsListView.as_view()),
-    path('course', CoursesListView.as_view())
+    path('course', CoursesListView.as_view()),
+    path('assistance', AssistanceListView.as_view()),
+    path('assistance/create', AssistanceCreateView.as_view()),
+    path('reportDay/<activity>', reportByDate.as_view())
 ]
