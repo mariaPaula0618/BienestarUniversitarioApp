@@ -1,6 +1,6 @@
 # todos/serializers.py
 from rest_framework import serializers
-from ..models import Activity, UserApp, Inscription, Course
+from ..models import Activity, UserApp, Inscription, Course, Param
 
 
 class ActivitySerializer(serializers.ModelSerializer):
@@ -45,3 +45,12 @@ class CourseSerializer(serializers.ModelSerializer):
             'week_day',
         )
         model = Course
+
+
+class ParamSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = (
+            'param_id',
+            'param_name'
+        )
+        model = Param

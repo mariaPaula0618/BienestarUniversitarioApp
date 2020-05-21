@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Button, Modal, ButtonGroup, ButtonToolbar } from 'react-bootstrap';
-import ActivityForm from './ActivityForm'
+import CourseForm from './CourseForm'
 
-class ActivityModal extends Component {
+class CourseModal extends Component {
 
     render() {
 
@@ -19,7 +19,6 @@ class ActivityModal extends Component {
                     <ButtonGroup className="mr-2" aria-label="First group">
                         <Button onClick={handleShow}>Nuevo</Button>
                     </ButtonGroup>
-
                 </ButtonToolbar>
 
                 <Modal show={show} onHide={handleClose} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
@@ -29,7 +28,7 @@ class ActivityModal extends Component {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <ActivityForm />
+                        <CourseForm />
                     </Modal.Body>
                     <Modal.Footer>
                         <Button onClick={handleClose}>Close</Button>
@@ -46,4 +45,4 @@ class ActivityModal extends Component {
 
 }
 
-export default ActivityModal;
+export default CourseModal;

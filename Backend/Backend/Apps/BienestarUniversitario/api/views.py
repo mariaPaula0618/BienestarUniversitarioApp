@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import (
     authenticate
 )
-from ..models import Activity, UserApp, Inscription, Course
-from .serializers import ActivitySerializer, UserAppSerializer, InscriptionSerializer, CourseSerializer
+from ..models import Activity, UserApp, Inscription, Course, Param
+from .serializers import ActivitySerializer, UserAppSerializer, InscriptionSerializer, CourseSerializer, ParamSerializer
 
 class ActivityListView(generics.ListAPIView):
     queryset = Activity.objects.all()
@@ -86,3 +86,12 @@ class ListActivitiesOfStudents(generics.ListAPIView):
         student_id = self.kwargs['student'] + ""
         result = Activity.objects.raw("select * from activity inner join (select * from inscription where user_id ='"+student_id+"') y on activity.activity_id= y.activity_id")
         return  result
+
+
+class ParamsListView(generics.ListAPIView):
+    queryset = Param.objects.all()
+    serializer_class = ParamSerializer
+
+class CoursesListView(generics.ListAPIView):
+    queryset = Course.objects.all()
+    serializer_class = CourseSerializer

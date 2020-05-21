@@ -10,7 +10,9 @@ from .views import (
     CourseCreateView,
     ProfessorActivitysAvailables,
     ListActivitiesOfStudents,
-    UserAppListByRoleView
+    UserAppListByRoleView,
+    ParamsListView,
+    CoursesListView
 )
 
 urlpatterns = [
@@ -28,4 +30,7 @@ urlpatterns = [
     path('activitys/<professor>', ProfessorActivitysAvailables.as_view()),
 
     path('activities/<student>', ListActivitiesOfStudents.as_view() ),
+
+    path('params', ParamsListView.as_view()),
+    path('course', CoursesListView.as_view())
 ]
