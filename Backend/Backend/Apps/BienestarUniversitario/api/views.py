@@ -36,6 +36,12 @@ class UserAppCreateView(generics.CreateAPIView):
     queryset = UserApp.objects.all()
     serializer_class = UserAppSerializer
 
+class UserAppListByRoleView(generics.ListAPIView):
+    serializer_class = UserAppSerializer
+    def get_queryset(self):
+        role = self.kwargs['role']
+        queryset = UserApp.objects.filter(role=role)
+        return queryset
 
 class CourseCreateView(generics.CreateAPIView):
     queryset = Course.objects.all()
