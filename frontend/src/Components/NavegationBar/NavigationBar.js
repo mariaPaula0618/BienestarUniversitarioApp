@@ -39,7 +39,10 @@ const Styles = styled.div`
 
 class NavigationBar extends Component{
 
+  
+
   render() {
+    let user = localStorage.getItem('user');
     return(
       <Styles>
          <div className="navigationbar-container">
@@ -50,7 +53,7 @@ class NavigationBar extends Component{
             </Nav>
             <Form inline>
              <div className="userInfo">
-                <h4>Nombre de usuario</h4>
+                <h4>{user} </h4>
                 <h6>Rol</h6>
              </div>
              <Dropdown className="droopdown">

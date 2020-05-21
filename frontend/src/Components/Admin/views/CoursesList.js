@@ -19,7 +19,11 @@ class CoursesList extends Component {
     }
 
     getActivities() {
-        axios.get("http://127.0.0.1:8000/api/activity")
+        axios.get("http://127.0.0.1:8000/api/activity",{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${localStorage.getItem('token')}`
+            }},{})
             .then((response) => {
                 const activities = response.data;
                 this.setState({ activities });
@@ -27,7 +31,11 @@ class CoursesList extends Component {
     }
 
     getParamas() {
-        axios.get("http://127.0.0.1:8000/api/params")
+        axios.get("http://127.0.0.1:8000/api/params",{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${localStorage.getItem('token')}`
+            }},{})
             .then((response) => {
                 const params = response.data;
                 this.setState({ params });
@@ -36,7 +44,11 @@ class CoursesList extends Component {
 
 
     getCourses() {
-        axios.get("http://127.0.0.1:8000/api/course")
+        axios.get("http://127.0.0.1:8000/api/course",{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${localStorage.getItem('token')}`
+            }},{})
             .then((response) => {
                 const courses = response.data;
                 this.setState({ courses });

@@ -92,6 +92,7 @@ class App extends Component{
       .then(res => {
         console.log(res.data)
         localStorage.setItem('token', res.data.token);
+        localStorage.setItem('user', res.data.user.first_name + " " + res.data.user.last_name);
         console.log( "--------------- "+ localStorage.getItem('token'))
 
         this.setState({
@@ -99,6 +100,7 @@ class App extends Component{
           displayed_form: '',
           username: res.data.user.first_name + " " + res.data.user.last_name
         });
+        
       });
   };
 

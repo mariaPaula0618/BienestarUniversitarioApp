@@ -35,7 +35,11 @@ class CourseForm extends Component {
         }
 
         console.log(p)
-        axios.post("http://localhost:8000/api/create/course/", 
+        axios.post("http://localhost:8000/api/create/course/",{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${localStorage.getItem('token')}`
+            }}, 
         {
             activity: this.state.activity,
             start_hour: this.secondsToString(this.state.start_hour),
@@ -49,7 +53,11 @@ class CourseForm extends Component {
     }
 
     async getActivities() {
-        axios.get("http://127.0.0.1:8000/api/activity")
+        axios.get("http://127.0.0.1:8000/api/activity",{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${localStorage.getItem('token')}`
+            }},{})
             .then((response) => {
                 const activities = response.data;
                 this.setState({ activities });
@@ -57,7 +65,11 @@ class CourseForm extends Component {
     }
 
     async getParamas() {
-        axios.get("http://127.0.0.1:8000/api/params")
+        axios.get("http://127.0.0.1:8000/api/params",{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${localStorage.getItem('token')}`
+            }},{})
             .then((response) => {
                 const params = response.data;
                 this.setState({ params });
