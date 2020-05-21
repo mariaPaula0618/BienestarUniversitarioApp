@@ -20,6 +20,7 @@ const Styles = styled.div`
 }
 .sidebar{
     width: 20%;
+    
 }
 .router-content{
     width: 80%;

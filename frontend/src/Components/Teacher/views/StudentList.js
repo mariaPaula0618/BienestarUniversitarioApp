@@ -10,8 +10,8 @@ class StudentList extends Component {
         super(props);
         this.state = {
             id_activity : props.match.params.id_activity,
-            students: [
-            ]
+            students: [],
+            activity_name : ""
         }
   
       }
@@ -25,8 +25,17 @@ class StudentList extends Component {
         });
     }
 
+    async getActivty(){
+        axios.get("http://127.0.0.1:8000/api/activity/"+this.state.id_activity)
+        .then((response) => {
+           const activity_name = response.data.activity_name;
+           this.setState({activity_name})
+       });
+    }
+
     componentDidMount(){
-     this.getStudents();        
+     this.getStudents();      
+     this.getActivty();   
     }
     
     render() {
@@ -44,14 +53,14 @@ class StudentList extends Component {
         }
         return (<div className="studentlist-container">
 
-            <h1> Esta es la actividad xxx</h1>
+            <h1> Esta es la actividad {this.state.activity_name}</h1>
             <Table striped bordered hover>
                 <thead>
                     <tr>
 
+                        <th>codigo</th>
                         <th>Nombre</th>
                         <th>Correo</th>
-                        <th>codigo</th>
                     </tr>
                 </thead>
                 <tbody>

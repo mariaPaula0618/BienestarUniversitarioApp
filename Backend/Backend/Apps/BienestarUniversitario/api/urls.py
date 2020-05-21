@@ -8,7 +8,8 @@ from .views import (
     UserAppCreateView,
     InscriptionCreateView,
     CourseCreateView,
-    ProfessorActivitysAvailables
+    ProfessorActivitysAvailables,
+    ListActivitiesOfStudents,
 )
 
 urlpatterns = [
@@ -22,5 +23,7 @@ urlpatterns = [
     path('create/inscription/', InscriptionCreateView.as_view()),
 
     path('create/course/', CourseCreateView.as_view()),
-    path('<professor>/activitys', ProfessorActivitysAvailables.as_view()),
+    path('activitys/<professor>', ProfessorActivitysAvailables.as_view()),
+
+    path('activities/<student>', ListActivitiesOfStudents.as_view() ),
 ]

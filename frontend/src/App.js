@@ -5,6 +5,8 @@ import { connect }  from 'react-redux';
 import BaseRouter from './Config/routes';
 import * as actions  from './store/actions/auth';
 
+//import store from './store/store';
+
 
 class App extends Component{
 
