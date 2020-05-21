@@ -26,7 +26,11 @@ class ActivityForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        axios.post("http://localhost:8000/api/create/activity/", 
+        axios.post("http://localhost:8000/api/create/activity/",{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${localStorage.getItem('token')}`
+            }}, 
         {
             activity_name: this.state.activity_name,
             place: this.state.place,
@@ -40,7 +44,11 @@ class ActivityForm extends Component {
     }
 
     async getProfesors() {
-        axios.get("http://127.0.0.1:8000/api/users/2")
+        axios.get("http://127.0.0.1:8000/api/users/2",{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${localStorage.getItem('token')}`
+            }},)
             .then((response) => {
                 const professors = response.data;
                 this.setState({ professors });

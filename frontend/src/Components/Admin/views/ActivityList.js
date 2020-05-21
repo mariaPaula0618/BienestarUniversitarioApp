@@ -20,7 +20,11 @@ class ActivityList extends Component {
     }
 
     async getActivities() {
-        axios.get("http://127.0.0.1:8000/api/activity/")
+        axios.get("http://127.0.0.1:8000/api/activity/",{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${localStorage.getItem('token')}`
+            }},{})
             .then((response) => {
                 const activies = response.data;
                 this.setState({ activies });
