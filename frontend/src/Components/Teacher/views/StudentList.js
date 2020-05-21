@@ -51,6 +51,7 @@ class StudentList extends Component {
             );
             return list_students;
         }
+        
         return (<div className="studentlist-container">
 
             <h1> Esta es la actividad {this.state.activity_name}</h1>
