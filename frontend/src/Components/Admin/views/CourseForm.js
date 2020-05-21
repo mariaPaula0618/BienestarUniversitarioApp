@@ -6,7 +6,7 @@ class ActivityForm extends Component {
     constructor() {
         super();
         this.state = {
-            activity_name: "",
+            activity: "",
             place: "",
             description: "",
             professor: "" ,
