@@ -14,7 +14,14 @@ class BienestarActivities extends Component{
     }
 
     async getActivities(){
-        axios.get("http://127.0.0.1:8000/api/activity/")
+        console.log(`JWT ${localStorage.getItem('token')}`)
+        axios.get("http://127.0.0.1:8000/api/activity/",
+        {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${localStorage.getItem('token')}`
+            }},{}
+        )
         .then((response) => {
            const activities = response.data;
            this.setState({activities})

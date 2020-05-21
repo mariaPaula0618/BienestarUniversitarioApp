@@ -15,7 +15,11 @@ class StudentAssistance extends Component{
       }
 
       async getActivty(){
-        axios.get("http://127.0.0.1:8000/api/activity/"+this.state.id_activity)
+        axios.get("http://127.0.0.1:8000/api/activity/"+this.state.id_activity,{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${localStorage.getItem('token')}`
+            }},{})
         .then((response) => {
            const activity_name = response.data.activity_name;
            this.setState({activity_name})

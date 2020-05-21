@@ -18,6 +18,7 @@ class Statistics extends Component{
         return(<Styles>
         <div className="statistics-container">
              <h1>Estadísticas</h1>
+             <hr></hr>
                 <br />
                 <br />
              <div className="graph-container">

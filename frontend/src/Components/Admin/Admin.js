@@ -34,9 +34,9 @@ class Admin extends Component{
         super();
         this.state = {
             items:[
-                {title:"Actividades de bienestar", icon: "house", link: "/adminPane/activites"},
-                {title:"Cursos de bienestar", icon: "house", link: "/adminPane/courses"},
-                {title:"Estadísticas", icon: "house", link: "/adminPane/statistics"},
+                {title:"Actividades de bienestar", icon: "list_alt", link: "/adminPane/activites"},
+                {title:"Cursos de bienestar", icon: "list_alt", link: "/adminPane/courses"},
+                {title:"Estadísticas", icon: "insert_chart", link: "/adminPane/statistics"},
             ]
           
   

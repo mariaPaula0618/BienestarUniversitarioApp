@@ -2,6 +2,24 @@ import  React, {Component} from 'react';
 import {Card, Button, Modal} from 'react-bootstrap';
 import axios from 'axios';
 
+import styled from 'styled-components'; 
+
+
+const Styles = styled.div`
+
+.card{
+    padding: 10px;
+    border: 1px solid #77aaff;
+	box-shadow:  -1px 1px #77aaff,
+		 -2px 2px #77aaff,
+		 -3px 3px #77aaff,
+		 -4px 4px #77aaff,
+		 -5px 5px #77aaff;
+}
+
+ 
+`;
+
 class Activity extends Component{
 
     constructor(props) {
@@ -19,7 +37,11 @@ class Activity extends Component{
         const  createInscription = () =>{
             console.log("soy un gato")
             let url = "http://127.0.0.1:8000/api/create/inscription/";
-            axios.post(url,
+            axios.post(url,{
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `JWT ${localStorage.getItem('token')}`
+                }},
             { user: "maria1777",
              activity: props.state.activity.activity_id} )
             .then((response) => {
@@ -64,8 +86,9 @@ class Activity extends Component{
         let route = this.props.link+"/"+this.state.activity.activity_id
   
 
-        return(<div className="activity-container">
-            <Card style={{ width: '18rem' }}>
+        return(<Styles>
+        <div className="activity-container">
+            <Card style={{ width: '18rem' }} border="primary" className="card">
                 <Card.Body>
                     <Card.Title>{this.state.activity.activity_name}</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">{this.state.activity.place}</Card.Subtitle>
@@ -83,6 +106,7 @@ class Activity extends Component{
                 </Card.Body>
             </Card>
         </div>
+        </Styles>
 
         )
     }

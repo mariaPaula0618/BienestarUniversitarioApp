@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import styled from 'styled-components';
-import { } from 'react-bootstrap';
-import { connect } from 'react-redux';
-import * as actions from '../store/actions/auth';
+import PropTypes from 'prop-types';
 
 
 const Styles = styled.div`
@@ -100,8 +98,8 @@ body, html, .App, #root, .auth-wrapper {
 `;
 
 class Login extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             email: '', 
             password: ''
@@ -120,7 +118,7 @@ class Login extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         console.log();
-        this.props.onAuth(this.state.email, this.state.password);
+        this.props.onAuth(this.state.username, this.state.password);
         this.props.history.push("/studentPane")
         console.log("recived values ", this.state);
     }
@@ -131,12 +129,12 @@ class Login extends Component {
                 <div className="parent">
                     <div className="childForm">
 
-                        <form onSubmit={this.handleSubmit.bind(this)}>
+                        <form onSubmit={e => this.props.handle_login(e, this.state)}>
                             <h3>Iniciar Sesión</h3>
 
                             <div className="form-group">
                                 <label>Correo</label>
-                                <input type="email" name="email" value={this.state.email} className="form-control" placeholder="correo@icesi.edu.co" onChange={this.handleChange.bind(this)}/>
+                                <input type="text" name="email" value={this.state.email} className="form-control" placeholder="correo@icesi.edu.co" onChange={this.handleChange.bind(this)}/>
                             </div>
 
                             <div className="form-group">
@@ -156,17 +154,10 @@ class Login extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        loading: state.loading,
-        error: state.error
-    }
-}
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onAuth: (username, password) => dispatch(actions.authLogin(username, password))
-    }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Login;
+
+Login.propTypes = {
+  handle_login: PropTypes.func.isRequired
+};

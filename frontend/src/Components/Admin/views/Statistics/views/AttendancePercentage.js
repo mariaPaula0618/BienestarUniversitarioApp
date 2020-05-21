@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {Pie} from 'react-chartjs-2';
+import axios from 'axios';
 
 
 class AttendancePercentage extends Component{
@@ -7,9 +8,13 @@ class AttendancePercentage extends Component{
     constructor() {
         super();
         this.state = {
-            labels: ['January', 'February', 'March',
+
+            assistances :[],
+            activities:[],
+
+           labels: ['January', 'February', 'March',
                     'April', 'May'],
-            datasets: [
+           datasets: [
                 {
                 label: 'Rainfall',
                 backgroundColor: [
@@ -29,16 +34,46 @@ class AttendancePercentage extends Component{
                 data: [65, 59, 80, 81, 56]
                 }
              ]
-          
-  
+            
         }
   
       }
 
+
+
+
+        async getActivities(){
+                axios.get("http://127.0.0.1:8000/api/activity/")
+                .then((response) => {
+                const activities = response.data;
+                this.setState({activities})
+            });
+        }
+
+        async getAssistance(){
+            axios.get("http://127.0.0.1:8000/api/assitance/")
+            .then((response) => {
+            const assistances = response.data;
+            this.setState({assistances})
+            });   
+    
+        }
+
+    
+
+
+        componentDidMount(){    
+            this.getActivities();  
+            this.getAssistance();
+           }
+           
+
     render(){
+        
         return(<div className="attendancePercentage-container">
             <h1> Actividades con mayor asistencia</h1>
-
+            <hr></hr>
+            <br />
             <div className="pieChartAttendance">
                     <Pie
                 data={this.state}

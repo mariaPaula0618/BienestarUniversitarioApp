@@ -34,8 +34,8 @@ class Student extends Component{
         super();
         this.state = {
             items:[
-                {title:"Actividades de bienestar", icon: "house", link: "/studentPane/activities"},
-                {title:"Actividades inscritas", icon: "house", link: "/studentPane/myActivities"},
+                {title:"Actividades de bienestar", icon: "accessibility_new", link: "/studentPane/activities"},
+                {title:"Actividades inscritas", icon: "view_list", link: "/studentPane/myActivities"},
             ]
           
   

@@ -35,8 +35,7 @@ class Teacher extends Component{
         super();
         this.state = {
             items:[
-                {title:"Actividades de bienestar", icon: "house", link: "/teacherPane/activities"},
-                {title:"Estadisticas", icon: "house", link: "/teacherPane/statistics"},
+                {title:"Mis actividades de bienestar", icon: "accessibility_new", link: "/teacherPane/activities"},
             ]
           
   

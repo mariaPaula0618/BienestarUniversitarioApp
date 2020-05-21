@@ -1,7 +1,7 @@
 import  React, {Component} from 'react';
 import {Form, Button} from 'react-bootstrap';
 import styled from 'styled-components';
-
+import PropTypes from 'prop-types';
 
 const Styles = styled.div`   
 
@@ -77,7 +77,7 @@ class Register extends Component{
     render(){
         return(<Styles>
         <div className="register-container"  >
-            <Form className="form-center" onSubmit={this.handleSubmit.bind(this)}>
+            <Form className="form-center" onSubmit={e => this.props.handle_signup(e, this.state)}>
             <h1>Registro</h1>
             <Form.Group controlId="formBasicName">
                 <Form.Label >Nombre</Form.Label>
@@ -86,7 +86,7 @@ class Register extends Component{
             </Form.Group>
             <Form.Group controlId="formBasicLastName">
                 <Form.Label >Apellido</Form.Label>
-                <Form.Control type="text" name="lastname" placeholder="Ingrese Apellidos" value={this.state.lastName} onChange={this.handleChange.bind(this)} />
+                <Form.Control type="text" name="lastName" placeholder="Ingrese Apellidos" value={this.state.lastName} onChange={this.handleChange.bind(this)} />
                 
             </Form.Group>
             <Form.Group controlId="formBasicEmail">
@@ -116,3 +116,6 @@ class Register extends Component{
 
 export default Register;
 
+Register.propTypes = {
+    handle_signup: PropTypes.func.isRequired
+  };

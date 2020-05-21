@@ -1,12 +1,21 @@
 from rest_framework import generics
+from django.http import HttpResponseRedirect
+from django.contrib.auth.models import User
+from rest_framework import permissions, status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework import permissions
+
+
 from django.contrib.auth.backends import BaseBackend
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import User
 from django.contrib.auth import (
     authenticate
 )
-from ..models import Activity, UserApp, Inscription, Course
-from .serializers import ActivitySerializer, UserAppSerializer, InscriptionSerializer, CourseSerializer
+from ..models import Activity, UserApp, Inscription, Course, Assistance
+from .serializers import ActivitySerializer, UserAppSerializer, InscriptionSerializer, CourseSerializer, AssistanceSerializer, UserSerializer, UserSerializerWithToken
 
 class ActivityListView(generics.ListAPIView):
     queryset = Activity.objects.all()
@@ -86,3 +95,35 @@ class ListActivitiesOfStudents(generics.ListAPIView):
         student_id = self.kwargs['student'] + ""
         result = Activity.objects.raw("select * from activity inner join (select * from inscription where user_id ='"+student_id+"') y on activity.activity_id= y.activity_id")
         return  result
+
+class AssistanceListView(generics.ListAPIView):
+    queryset = Activity.objects.all()
+    serializer_class = ActivitySerializer 
+
+
+@api_view(['GET'])
+def current_user(request):
+    """
+    Determine the current user by their token, and return their data
+    """
+    
+    serializer = UserSerializer(request.user)
+    return Response(serializer.data)
+
+
+class UserList(APIView):
+    """
+    Create a new user. It's called 'UserList' because normally we'd have a get
+    method here too, for retrieving a list of all User objects.
+    """
+
+    permission_classes = (permissions.AllowAny,)
+
+    def post(self, request, format=None):
+        print(request.data)
+        serializer = UserSerializerWithToken(data=request.data)
+        
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

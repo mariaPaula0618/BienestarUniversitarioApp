@@ -15,7 +15,7 @@ const BaseRouter = (props) => (
         <Route path="/studentPane" component={Student} />
         <Route path="/teacherPane" component={Teacher} />
         <Route path="/adminPane" component={Admin} />
-        <Route exact path="/" component={Login} {...props}/>
+        <Route exact path="/" component={Login} />
     </Switch>
 </Router>
 </div>

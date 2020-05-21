@@ -16,7 +16,11 @@ class StudentActivities extends Component{
     }
 
     async getActivities(){
-        axios.get("http://127.0.0.1:8000/api/activities/"+this.state.id_user)
+        axios.get("http://127.0.0.1:8000/api/activities/"+this.state.id_user,{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${localStorage.getItem('token')}`
+            }},{})
         .then((response) => {
            const activities = response.data;
            this.setState({activities})

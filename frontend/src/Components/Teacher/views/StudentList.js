@@ -18,7 +18,11 @@ class StudentList extends Component {
 
 
      async getStudents(){
-         axios.get("http://127.0.0.1:8000/api/enrollstudents/"+this.state.id_activity)
+         axios.get("http://127.0.0.1:8000/api/enrollstudents/"+this.state.id_activity,{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${localStorage.getItem('token')}`
+            }},{})
          .then((response) => {
             const students = response.data;
             this.setState({students})
@@ -26,7 +30,11 @@ class StudentList extends Component {
     }
 
     async getActivty(){
-        axios.get("http://127.0.0.1:8000/api/activity/"+this.state.id_activity)
+        axios.get("http://127.0.0.1:8000/api/activity/"+this.state.id_activity,{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${localStorage.getItem('token')}`
+            }},{})
         .then((response) => {
            const activity_name = response.data.activity_name;
            this.setState({activity_name})
@@ -55,6 +63,8 @@ class StudentList extends Component {
         return (<div className="studentlist-container">
 
             <h1> Esta es la actividad {this.state.activity_name}</h1>
+            <hr></hr>
+            <br></br>
             <Table striped bordered hover>
                 <thead>
                     <tr>
