@@ -78,3 +78,11 @@ class SettingsBackend(BaseBackend):
             return User.objects.get(pk=user_id)
         except User.DoesNotExist:
             return None
+
+
+class ListActivitiesOfStudents(generics.ListAPIView):
+    serializer_class = ActivitySerializer
+    def get_queryset(self):
+        student_id = self.kwargs['student'] + ""
+        result = Activity.objects.raw("select * from activity inner join (select * from inscription where user_id ='"+student_id+"') y on activity.activity_id= y.activity_id")
+        return  result

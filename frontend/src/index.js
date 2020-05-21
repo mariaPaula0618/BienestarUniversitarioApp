@@ -7,11 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import {BrowserRouter, Route} from 'react-router-dom';
-
-
-
-
+import {BrowserRouter, Route} from 'react-router-dom'
 import reducer from './store/reducers/auth';
 
 const composeEnhances = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
