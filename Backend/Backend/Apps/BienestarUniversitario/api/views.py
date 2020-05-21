@@ -1,4 +1,5 @@
 from rest_framework import generics
+<<<<<<< HEAD
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from rest_framework import permissions, status
@@ -8,14 +9,22 @@ from rest_framework.views import APIView
 from rest_framework import permissions
 
 
+=======
+from django.core import serializers
+>>>>>>> e74e6e791bc783c46f4d465ceb3b32b1e9f27f16
 from django.contrib.auth.backends import BaseBackend
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import User
 from django.contrib.auth import (
     authenticate
 )
+<<<<<<< HEAD
 from ..models import Activity, UserApp, Inscription, Course, Assistance
 from .serializers import ActivitySerializer, UserAppSerializer, InscriptionSerializer, CourseSerializer, AssistanceSerializer, UserSerializer, UserSerializerWithToken
+=======
+from ..models import Activity, UserApp, Inscription, Course, Param, Assistance
+from .serializers import ActivitySerializer, UserAppSerializer, InscriptionSerializer, CourseSerializer, ParamSerializer, AssistanceSerializer, ReportDaySerializer
+>>>>>>> e74e6e791bc783c46f4d465ceb3b32b1e9f27f16
 
 class ActivityListView(generics.ListAPIView):
     queryset = Activity.objects.all()
@@ -96,10 +105,6 @@ class ListActivitiesOfStudents(generics.ListAPIView):
         result = Activity.objects.raw("select * from activity inner join (select * from inscription where user_id ='"+student_id+"') y on activity.activity_id= y.activity_id")
         return  result
 
-class AssistanceListView(generics.ListAPIView):
-    queryset = Activity.objects.all()
-    serializer_class = ActivitySerializer 
-
 
 @api_view(['GET'])
 def current_user(request):
@@ -127,3 +132,30 @@ class UserList(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ParamsListView(generics.ListAPIView):
+    queryset = Param.objects.all()
+    serializer_class = ParamSerializer
+
+class CoursesListView(generics.ListAPIView):
+    queryset = Course.objects.all()
+    serializer_class = CourseSerializer
+
+class AssistanceCreateView(generics.CreateAPIView):
+    queryset = Assistance.objects.all()
+    serializer_class = AssistanceSerializer
+
+
+class AssistanceListView(generics.ListAPIView):
+    queryset = Assistance.objects.all()
+    serializer_class = AssistanceSerializer
+
+
+class reportByDate(generics.ListAPIView):
+    def get_queryset(self):
+        activity = self.kwargs['activity']
+        result = Assistance.objects.raw("select date_trunc('year', date), count(*), 1 as assistance_id from assistance inner join (select activity_id,course_id  from course where activity_id ="+ activity +") y on assistance.course_id  = y.course_id group by 1")
+        lista = serializers.serialize('json', result)
+        print(lista)
+        return  lista
+    serializer_class = ReportDaySerializer

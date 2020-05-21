@@ -1,8 +1,12 @@
 # todos/serializers.py
 from rest_framework import serializers
+<<<<<<< HEAD
 from rest_framework_jwt.settings import api_settings
 from django.contrib.auth.models import User
 from ..models import Activity, UserApp, Inscription, Course, Assistance
+=======
+from ..models import Activity, UserApp, Inscription, Course, Param, Assistance
+>>>>>>> e74e6e791bc783c46f4d465ceb3b32b1e9f27f16
 
 
 class ActivitySerializer(serializers.ModelSerializer):
@@ -48,16 +52,6 @@ class CourseSerializer(serializers.ModelSerializer):
         )
         model = Course
 
-
-class AssistanceSerializer(serializers.ModelSerializer):
-    class Meta:
-        fields= (
-            'assistance_id',
-            'inscription',
-            'course',
-            'date',
-        )
-        model = Assistance
         
 class UserSerializer(serializers.ModelSerializer):
 
@@ -100,3 +94,40 @@ class UserSerializerWithToken(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('token', 'username','email', 'password', 'first_name', 'last_name')
+
+
+
+        
+class ParamSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = (
+            'param_id',
+            'param_name'
+        )
+        model = Param
+
+
+class AssistanceSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = (
+            'assistance_id',
+            'inscription',
+            'course',
+            'date'
+        )
+        model = Assistance
+
+class ReportDaySerializer(serializers.Serializer):
+    def to_internal_value(self, data):
+        return {
+            'date_trunc': data.get('date_trunc'),
+            'count': data.get('count'),
+            'assistance_id': data.get('assistance_id')
+        }
+    def to_representation(self, instance):
+        
+        return {
+            'date_trunc': instance.date_trunc,
+            'count': instance.count,
+            'assistance_id': instance.assistance_id
+        }
